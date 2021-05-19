@@ -1,8 +1,11 @@
 package com.condreadrian.Quiz.model;
 
+import com.condreadrian.Quiz.domain.Question;
 import com.condreadrian.Quiz.domain.User;
 
 import java.sql.*;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by forest.
@@ -43,7 +46,6 @@ public class DBManager {
     }
 
     public boolean checkExistingUser(String username) {
-        //TODO: implement check existing user
         String sql = String.format("select * from users where user = '%s'", username);
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -66,5 +68,20 @@ public class DBManager {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public List<Question> getQuestions() {
+        List<Question> questions = new LinkedList<Question>();
+        ResultSet rs;
+        try {
+            rs = stmt.executeQuery("select * from questions");
+            while (rs.next()) {
+                questions.add(new Question(rs.getInt("id"), rs.getString("question"), rs.getString("answers"), rs.getString("correctAnswer")));
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return questions;
     }
 }
