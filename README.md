@@ -10,6 +10,6 @@ All web pages should be accessible only if the user logs in using a username and
 * add confirmation when the user deletes/cancels an item
 * do a bare minimum CSS that at least aligns the various input fields
 * State information (between web requests) is always stored in a database; you may store some state information in cookies/session objects.
-```
+
 Solve the following problem using the JSP/Servlet technology. Write a web application which implements a quiz test. The application displays several questions together with their possible answers on a web page and the use must choose an appropriate answer. The number of questions per page should be configured by the user. Also the number of questions in a test should be configured (chosen) by the user. The questions and possible answers are stored in the database. In the end, the application displays the number of questions correctly answered by the user and the number of questions wrongly answered by the user, together with the all time best result of the user.
-```
+
