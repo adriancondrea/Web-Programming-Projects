@@ -24,23 +24,59 @@
     <input type="submit" value="Logout"/>
 </form>
 
+<form>
+    Total number of questions: <input type="number" id="questions_total" value="5"/>
+    Questions per page: <input type="number" id="questions_page" value="5"/>
+    <input type="submit" value="Get Questions"/>
+</form><br>
+
 <div id="questions"></div>
+
+<button id="submit-button">Submit</button>
+
+<div id="result"></div>
+
 <script>
+    function updateScore(questions) {
+        let score = {right: 0, wrong: 0};
+        for(const questionNumber in questions) {
+            let inputName = "\"" + questionNumber + "\"";
+            let selected_value = $("input[name=" + inputName + "]:checked").val()
+            let actual_value = questions[questionNumber].correctAnswer
+            if(selected_value != undefined && selected_value === actual_value){
+                score["right"]++;
+            }
+            else{
+                score["wrong"]++;
+            }
+        }
+
+        $("#result").html("");
+        $("#result").append("<h1> Quiz Done! You have given " + score.right + " correct answers");
+        if(score.wrong === 0){
+            $("#result").append("Congrats! All your responses were correct! Your average is 100%")
+        }
+        else {
+            $("#result").append("Unfortunately, you have given " + score.wrong + " wrong answers.Your average is " +
+                (score.right / (questions.length) * 100).toFixed(1) + "%")
+        }
+    }
+
     $(document).ready(function () {
         getQuestions(function (questions) {
-            console.log(questions);
             $("#questions").html("");
             for(var questionNumber in questions) {
                 $("#questions").append("<h1>" + questions[questionNumber].question + "</h1>")
                 let answers = questions[questionNumber].answers.split(";")
                 for(const answer in answers){
-                    $("#questions").append("<input type = \"radio\" name = \"" + questionNumber + "\" value = \"" + (answer + 1) + "\">" + answers[answer]+ "<br>");
+                    $("#questions").append("<input type = \"radio\" name = \"" + questionNumber + "\" value = \"" + answers[answer].toString() + "\">" + answers[answer]+ "<br>");
                 }
-
-
             }
+            $("#submit-button").click( function () {
+                updateScore(questions)
+                })
         })
-    })
+    });
 </script>
 
 </body>

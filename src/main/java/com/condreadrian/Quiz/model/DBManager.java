@@ -1,6 +1,7 @@
 package com.condreadrian.Quiz.model;
 
 import com.condreadrian.Quiz.domain.Question;
+import com.condreadrian.Quiz.domain.Result;
 import com.condreadrian.Quiz.domain.User;
 
 import java.sql.*;
@@ -61,7 +62,6 @@ public class DBManager {
             return;
         }
         String sql = String.format("insert into users(id, user, password) values (null, '%s', '%s')", username, password);
-        System.out.println(sql);
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.execute();
@@ -83,5 +83,20 @@ public class DBManager {
             e.printStackTrace();
         }
         return questions;
+    }
+
+    public Result getResult(int userId) {
+        ResultSet rs;
+        Result r = null;
+        try {
+            rs = stmt.executeQuery("select * from results where userId='" + userId + "'");
+            if(rs.next()){
+                r = new Result(rs.getInt("userId"),rs.getInt("correctAnswers"), rs.getInt("wrongAnswers"), rs.getFloat("score") );
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return r;
     }
 }
