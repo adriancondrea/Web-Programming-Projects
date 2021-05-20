@@ -21,6 +21,10 @@ public class GetQuestionsController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         DBManager dbmanager = new DBManager();
         List<Question> questions = dbmanager.getQuestions();
+        int number_of_questions = Integer.parseInt(req.getParameter("questions_total"));
+        if (questions.size() > number_of_questions){
+            questions = questions.subList(0, number_of_questions);
+        }
 
         String json = new Gson().toJson(questions);
         resp.setContentType("application/json");

@@ -24,16 +24,16 @@
     <input type="submit" value="Logout"/>
 </form>
 
-<form>
+<div>
     Total number of questions: <input type="number" id="questions_total" value="5"/>
-    Questions per page: <input type="number" id="questions_page" value="5"/>
-    <input type="submit" value="Get Questions"/>
-</form>
+    <%--    Questions per page: <input type="number" id="questions_page" value="5"/>--%>
+    <button id="get-questions">Get Questions</button>
+</div>
 <br>
 
 <div id="questions"></div>
 
-<button id="submit-button">Submit</button>
+<button id="submit-button" style="display: none">Submit</button>
 
 <div id="result"></div>
 
@@ -65,30 +65,36 @@
         let userId = ${user.getId()};
         let s = (score.right / questions.length).toFixed(2)
         $.ajax({
-            url:'/GetResultsController',
+            url: '/GetResultsController',
             type: 'GET',
             data: {userId: userId, score: s},
-            success: function(data) {
+            success: function (data) {
                 $('#best').html("Best result:" + parseFloat(data.score) * 100 + "%");
             }
         });
     }
 
     $(document).ready(function () {
-        getQuestions(function (questions) {
-            $("#questions").html("");
-            for (var questionNumber in questions) {
-                $("#questions").append("<h1>" + questions[questionNumber].question + "</h1>")
-                let answers = questions[questionNumber].answers.split(";")
-                for (const answer in answers) {
-                    $("#questions").append("<input type = \"radio\" name = \"" + questionNumber + "\" value = \"" + answers[answer].toString() + "\">" + answers[answer] + "<br>");
-                }
-            }
-            $("#submit-button").click(function () {
-                updateScore(questions)
-            })
-        })
-    });
+        $("#get-questions").click( function() {
+            $("#submit-button").show()
+            $.ajax({
+                url: '/GetQuestionsController',
+                type: 'GET',
+                data: {questions_total: $("#questions_total").val()},
+                success: function (questions) {
+                    $("#questions").html("");
+                    for (var questionNumber in questions) {
+                        $("#questions").append("<h1>" + questions[questionNumber].question + "</h1>")
+                        let answers = questions[questionNumber].answers.split(";")
+                        for (const answer in answers) {
+                            $("#questions").append("<input type = \"radio\" name = \"" + questionNumber + "\" value = \"" + answers[answer].toString() + "\">" + answers[answer] + "<br>");
+                        }
+                    }
+                    $("#submit-button").click(function () {
+                        updateScore(questions)
+                    })
+                }})
+            })})
 </script>
 
 </body>

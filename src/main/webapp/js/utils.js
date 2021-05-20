@@ -1,3 +1,3 @@
-function getQuestions(callbackFunction) {
-    $.getJSON("GetQuestionsController", {}, callbackFunction);
+function getQuestions(questions_total, callbackFunction) {
+    $.getJSON("GetQuestionsController", {questions_total: questions_total}, callbackFunction);
 }
