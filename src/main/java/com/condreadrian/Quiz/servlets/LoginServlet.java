@@ -1,4 +1,4 @@
-package com.condreadrian.Quiz.controller;
+package com.condreadrian.Quiz.servlets;
 
 import com.condreadrian.Quiz.domain.User;
 import com.condreadrian.Quiz.model.DBManager;
@@ -12,9 +12,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
-public class LoginController extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
-    public LoginController() {
+    public LoginServlet() {
         super();
     }
 

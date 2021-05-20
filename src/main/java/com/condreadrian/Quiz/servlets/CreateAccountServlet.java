@@ -1,6 +1,5 @@
-package com.condreadrian.Quiz.controller;
+package com.condreadrian.Quiz.servlets;
 
-import com.condreadrian.Quiz.domain.User;
 import com.condreadrian.Quiz.model.DBManager;
 
 import javax.servlet.RequestDispatcher;
@@ -10,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class CreateAccountController extends HttpServlet {
-    public CreateAccountController() {
+public class CreateAccountServlet extends HttpServlet {
+    public CreateAccountServlet() {
         super();
     }
 

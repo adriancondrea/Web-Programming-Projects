@@ -1,5 +1,5 @@
 <%@ page import="com.condreadrian.Quiz.domain.User" %>
-<%@ page import="com.condreadrian.Quiz.controller.GetQuestionsController" %>
+<%@ page import="com.condreadrian.Quiz.servlets.GetQuestionsServlet" %>
 <%@ page import="com.condreadrian.Quiz.domain.Question" %>
 <%@ page import="java.util.List" %>
 
@@ -20,7 +20,7 @@
     }
 %>
 
-<form action="LogoutController" method="post">
+<form action="LogoutServlet" method="post">
     <input type="submit" value="Logout"/>
 </form>
 
@@ -65,7 +65,7 @@
         let userId = ${user.getId()};
         let s = (score.right / questions.length).toFixed(2)
         $.ajax({
-            url: '/GetResultsController',
+            url: '/GetResultsServlet',
             type: 'GET',
             data: {userId: userId, score: s},
             success: function (data) {
@@ -78,7 +78,7 @@
         $("#get-questions").click( function() {
             $("#submit-button").show()
             $.ajax({
-                url: '/GetQuestionsController',
+                url: '/GetQuestionsServlet',
                 type: 'GET',
                 data: {questions_total: $("#questions_total").val()},
                 success: function (questions) {

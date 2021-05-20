@@ -15,5 +15,6 @@
 </head>
 <body>
 Login failed!
+<button onclick="window.location.replace('index.html')">Go back</button>
 </body>
 </html>

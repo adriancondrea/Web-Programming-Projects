@@ -90,17 +90,16 @@ public class DBManager {
         Result r = null;
         try {
             rs = stmt.executeQuery("select * from results where userId='" + userId + "'");
-            if(rs.next()){
-                r = new Result(rs.getInt("userId"), rs.getFloat("score") );
+            if (rs.next()) {
+                r = new Result(rs.getInt("userId"), rs.getFloat("score"));
             }
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return r;
     }
 
-    public void saveResult(int userId, float score){
+    public void saveResult(int userId, float score) {
         String sql = String.format("insert into results(userId, score) values ('%d', '%f')", userId, score);
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -110,7 +109,7 @@ public class DBManager {
         }
     }
 
-    public boolean betterResult(int userId, float score){
+    public boolean betterResult(int userId, float score) {
         Result r = getResult(userId);
         return r == null || r.getScore() < score;
     }
@@ -126,11 +125,10 @@ public class DBManager {
         return getResult(newResult.getUserId());
     }
 
-    public Result updateBestResult(Result r){
-        if(getResult(r.getUserId()) == null){
+    public Result updateBestResult(Result r) {
+        if (getResult(r.getUserId()) == null) {
             saveResult(r.getUserId(), r.getScore());
-        }
-        else if(betterResult(r.getUserId(), r.getScore())){
+        } else if (betterResult(r.getUserId(), r.getScore())) {
             updateResult(r);
         }
         return getResult(r.getUserId());

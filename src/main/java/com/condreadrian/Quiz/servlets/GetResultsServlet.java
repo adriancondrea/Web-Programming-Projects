@@ -1,32 +1,30 @@
-package com.condreadrian.Quiz.controller;
+package com.condreadrian.Quiz.servlets;
 
-import com.condreadrian.Quiz.domain.Question;
+import com.condreadrian.Quiz.domain.Result;
 import com.condreadrian.Quiz.model.DBManager;
 import com.google.gson.Gson;
 
-import javax.json.JsonArray;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-public class GetQuestionsController extends HttpServlet {
-    public GetQuestionsController() {
+public class GetResultsServlet extends HttpServlet {
+    public GetResultsServlet() {
         super();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        DBManager dbmanager = new DBManager();
-        List<Question> questions = dbmanager.getQuestions();
-        int number_of_questions = Integer.parseInt(req.getParameter("questions_total"));
-        if (questions.size() > number_of_questions){
-            questions = questions.subList(0, number_of_questions);
-        }
+        String userId = req.getParameter("userId");
+        String score = req.getParameter("score");
+        Result r = new Result(Integer.parseInt(userId), Float.parseFloat(score));
 
-        String json = new Gson().toJson(questions);
+        DBManager dbmanager = new DBManager();
+        Result newResult = dbmanager.updateBestResult(r);
+
+        String json = new Gson().toJson(newResult);
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
         resp.getWriter().write(json);

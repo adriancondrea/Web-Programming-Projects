@@ -5,52 +5,52 @@
          version="3.1">
 
     <servlet>
-        <servlet-name>LoginController</servlet-name>
-        <servlet-class>com.condreadrian.Quiz.controller.LoginController</servlet-class>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.condreadrian.Quiz.servlets.LoginServlet</servlet-class>
     </servlet>
 
     <servlet>
-        <servlet-name>CreateAccountController</servlet-name>
-        <servlet-class>com.condreadrian.Quiz.controller.CreateAccountController</servlet-class>
+        <servlet-name>CreateAccountServlet</servlet-name>
+        <servlet-class>com.condreadrian.Quiz.servlets.CreateAccountServlet</servlet-class>
     </servlet>
 
     <servlet>
-        <servlet-name>LogoutController</servlet-name>
-        <servlet-class>com.condreadrian.Quiz.controller.LogoutController</servlet-class>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.condreadrian.Quiz.servlets.LogoutServlet</servlet-class>
     </servlet>
 
     <servlet>
-        <servlet-name>GetQuestionsController</servlet-name>
-        <servlet-class>com.condreadrian.Quiz.controller.GetQuestionsController</servlet-class>
+        <servlet-name>GetQuestionsServlet</servlet-name>
+        <servlet-class>com.condreadrian.Quiz.servlets.GetQuestionsServlet</servlet-class>
     </servlet>
 
     <servlet>
-        <servlet-name>GetResultsController</servlet-name>
-        <servlet-class>com.condreadrian.Quiz.controller.GetResultsController</servlet-class>
+        <servlet-name>GetResultsServlet</servlet-name>
+        <servlet-class>com.condreadrian.Quiz.servlets.GetResultsServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>LoginController</servlet-name>
-        <url-pattern>/LoginController</url-pattern>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>CreateAccountController</servlet-name>
-        <url-pattern>/CreateAccountController</url-pattern>
+        <servlet-name>CreateAccountServlet</servlet-name>
+        <url-pattern>/CreateAccountServlet</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>LogoutController</servlet-name>
-        <url-pattern>/LogoutController</url-pattern>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>GetQuestionsController</servlet-name>
-        <url-pattern>/GetQuestionsController</url-pattern>
+        <servlet-name>GetQuestionsServlet</servlet-name>
+        <url-pattern>/GetQuestionsServlet</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>GetResultsController</servlet-name>
-        <url-pattern>/GetResultsController</url-pattern>
+        <servlet-name>GetResultsServlet</servlet-name>
+        <url-pattern>/GetResultsServlet</url-pattern>
     </servlet-mapping>
 </web-app>
