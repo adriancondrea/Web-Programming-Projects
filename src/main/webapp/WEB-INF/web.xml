@@ -24,6 +24,11 @@
         <servlet-class>com.condreadrian.Quiz.controller.GetQuestionsController</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>GetResultsController</servlet-name>
+        <servlet-class>com.condreadrian.Quiz.controller.GetResultsController</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -42,5 +47,10 @@
     <servlet-mapping>
         <servlet-name>GetQuestionsController</servlet-name>
         <url-pattern>/GetQuestionsController</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>GetResultsController</servlet-name>
+        <url-pattern>/GetResultsController</url-pattern>
     </servlet-mapping>
 </web-app>
