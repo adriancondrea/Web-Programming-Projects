@@ -1,4 +1,4 @@
-# Quiz
+# Quiz JSP
 Web application which implements a quiz test.
 
 Develop a web application based on JSP (Java Server Pages) or Java Servlets. 
