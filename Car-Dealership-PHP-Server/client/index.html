@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
+    <title>Dealership</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1>Car Dealership</h1>
+
+    <h2>Filter by brand: </h2>
+    <h2 id="last_filter"></h2>
+    <button id="remove-filter-button">Remove Filter</button>
+    <div id="brands"></div>
+    <div id="cars"></div>
+
+    <div class="crud_wrapper">
+        <div id="add_car">
+            <h1>Add Car:</h1>
+
+            <div class="input_wrapper">
+                <span>BrandId</span>
+                <input id="brandId_add" placeholder="BrandId">
+            </div>
+
+            <div class="input_wrapper">
+                <span>Model</span>
+                <input id="model_add" placeholder="Model">
+            </div>
+
+            <div class="input_wrapper">
+                <span>Production Year</span>
+                <input id="productionYear_add" placeholder="Production Year">
+            </div>
+
+            <div class="input_wrapper">
+                <span>Engine power</span>
+                <input id="enginePower_add" placeholder="Engine power">
+            </div>
+
+            <div class="input_wrapper">
+                <span>Fuel</span>
+                <input id="fuel_add" placeholder="fuel">
+            </div>
+
+            <div class="input_wrapper">
+                <span>Color</span>
+                <input id="color_add" placeholder="color">
+            </div>
+
+            <div class="input_wrapper">
+                <span>Price</span>
+                <input id="price_add" placeholder="price">
+            </div>
+
+            <div class="actions">
+                <button id="add-car-button">Add Car</button>
+            </div>
+        </div>
+
+        <div id="remove_car">
+            <h1>Remove car:</h1>
+            <span>Remove car by id: </span>
+            <input id="removed-car-id" placeholder="Id"><br>
+            <button id="remove-car-button">Remove car</button>
+        </div>
+
+        <div id="update-car">
+            <h1>Update car: </h1>
+            <div class="input_wrapper">
+                <span>carId</span>
+                <input id="carId_update" placeholder="Car Id">
+            </div>
+
+            <div class="input_wrapper">
+                <span>BrandId</span>
+                <input id="brandId_update" placeholder="BrandId">
+            </div>
+
+            <div class="input_wrapper">
+                <span>Model</span>
+                <input id="model_update" placeholder="Model">
+            </div>
+
+            <div class="input_wrapper">
+                <span>Production Year</span>
+                <input id="productionYear_update" placeholder="Production Year">
+            </div>
+
+            <div class="input_wrapper">
+                <span>Engine power</span>
+                <input id="enginePower_update" placeholder="Engine power">
+            </div>
+
+            <div class="input_wrapper">
+                <span>Fuel</span>
+                <input id="fuel_update" placeholder="fuel">
+            </div>
+
+            <div class="input_wrapper">
+                <span>Color</span>
+                <input id="color_update" placeholder="color">
+            </div>
+
+            <div class="input_wrapper">
+                <span>Price</span>
+                <input id="price_update" placeholder="price">
+            </div>
+
+            <div class="actions">
+                <button id="update-car-button">Update Car</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

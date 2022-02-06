@@ -1,0 +1,21 @@
+.crud_wrapper{
+    display: flex;
+    align-content: space-between;
+}
+
+.crud_wrapper div{
+    flex-basis: 100%;
+}
+body{
+    background-image:
+            linear-gradient(
+                    rgba(0, 0, 0, 0.5),
+                    rgba(0, 0, 0, 0.5)),
+            url('dealership.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1, h2,h3, div{
+    color: white;
+}
